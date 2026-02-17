@@ -1,0 +1,926 @@
+/* 
+ * SANAAR GOLD - LUXURY THEME
+ * Colors: Black (#0B0B0B), White (#FFFFFF), Gold (#C9A46C)
+ * Fonts: Playfair Display (Headings), Lato (Body)
+ */
+
+:root {
+    --color-black: #0B0B0B;
+    --color-white: #FFFFFF;
+    --color-off-white: #F8F8F8;
+    --color-gold: #C9A46C;
+    --color-text-dark: #222222;
+    --color-text-light: #CCCCCC;
+
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
+    --font-accent: 'Great Vibes', cursive;
+
+    --spacing-container: 120px;
+    --spacing-section: 100px;
+}
+
+/* RESET */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-white);
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* TYPOGRAPHY */
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.hero-title {
+    font-size: 3rem;
+    /* Fallback */
+    font-size: clamp(2.5rem, 5vw, 5.6rem);
+    /* Responsive */
+    letter-spacing: 0.02em;
+    margin-bottom: 2rem;
+    color: var(--color-white);
+}
+
+.section-title {
+    font-size: 2rem;
+    font-size: clamp(1.8rem, 4vw, 3.5rem);
+    margin-bottom: 1.5rem;
+    color: var(--color-black);
+}
+
+
+
+.accent-text {
+    font-family: var(--font-accent);
+    font-size: 2rem;
+    color: var(--color-gold);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.section-desc {
+    font-size: 1.1rem;
+    color: var(--color-text-dark);
+    max-width: 600px;
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+.center-text {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* UTILS */
+.container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section {
+    padding: var(--spacing-section) 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    /* Base z-index for sections */
+    background-color: var(--color-white);
+    /* Ensure opaque background for stacking */
+    min-height: 100vh;
+    /* Force full height for cinematic effect */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Center content vertically in the viewport */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    /* Subtle separator for stacking */
+}
+
+/* Ensure Hero is also sticky and full screen */
+/* Ensure Hero is also sticky and full screen */
+.hero {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--color-black);
+    width: 100%;
+    /* Ensure full width */
+}
+
+/* Specific section overrides for z-index stacking if needed, 
+   but DOM order usually handles it. We just need to ensure backgrounds are set. */
+
+/* Collection Section needs white bg */
+/* Collection Section needs white bg */
+.collection-section {
+    background-color: var(--color-white);
+    z-index: 20;
+}
+
+/* Why Section needs off-white bg */
+.why-section {
+    background-color: var(--color-off-white);
+    z-index: 30;
+}
+
+/* Corporate needs white */
+.corporate-section {
+    background-color: var(--color-white);
+    z-index: 40;
+}
+
+/* Featured needs black */
+.featured-section {
+    background-color: #000;
+    z-index: 50;
+    /* Already has height logic */
+}
+
+/* Insta needs white */
+.insta-section {
+    background-color: var(--color-white);
+    z-index: 60;
+    padding-bottom: 4rem;
+    /* Add padding back since min-height is 100vh now */
+}
+
+/* Story needs white */
+.story-section {
+    background-color: var(--color-white);
+    z-index: 70;
+}
+
+/* Footer needs top z-index if sticky, or just normal flow at bottom */
+.footer {
+    position: sticky;
+    top: 0;
+    z-index: 80;
+    background-color: var(--color-white);
+    min-height: 100vh;
+    /* Footer as a full page reveal? Or standard? 
+       Standard footer usually isn't 100vh. 
+       If previous sections are sticky 100vh, footer scrolling normally might get hidden behind them?
+       No, footer is last in DOM. 
+       If we make footer sticky top 0, it will slide over the last section. 
+       Let's try normal sticky behavior for footer too to keep the pattern consistent. */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* BUTTONS */
+.btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.btn-primary {
+    background-color: var(--color-white);
+    color: var(--color-black);
+    border-color: var(--color-white);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--color-white);
+}
+
+.btn-text {
+    color: var(--color-black);
+    font-weight: 400;
+    border-bottom: 1px solid var(--color-black);
+    padding: 0 0 5px 0;
+}
+
+.btn-text:hover {
+    color: var(--color-gold);
+    border-color: var(--color-gold);
+}
+
+.btn-nav {
+    border: 1px solid var(--color-black);
+    padding: 0.5rem 1.5rem;
+}
+
+.btn-nav:hover {
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
+/* NAVIGATION */
+.navbar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 2rem 0;
+    z-index: 100;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    /* Adjust based on logo aspect ratio */
+    width: auto;
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 3rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--color-white);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--color-gold);
+}
+
+/* HERO SECTION */
+.hero {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: var(--color-black);
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#fog-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    /* Middle layer: Above video (1), Below text (3) */
+    pointer-events: none;
+    /* Let clicks pass through to video/buttons if needed */
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    /* Dark overlay for text readability */
+    z-index: 1;
+    /* Move overlay below fog so fog is brighter? Or above?
+       The user wants "haze ... BELOW the text". 
+       If overlay is dark, fog should probably be ON TOP of the dark overlay 
+       to be visible, but BELOW text. 
+       Let's put Fog at z-index 2.
+       Overlay at z-index 1.
+       Video at z-index 0 (handled by .hero-bg > video default stacking).
+       Wait, .hero-bg is z:1. 
+       Let's adhere to:
+       .hero-bg (z:1) contains:
+          video (default)
+          .video-overlay (z:1 -> absolute relative to hero-bg)
+          #fog-canvas (z:2 -> absolute relative to hero-bg)
+       .hero-content (z:3)
+    */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    max-width: 900px;
+}
+
+.hero-subtitle {
+    font-family: var(--font-body);
+    font-size: 1.25rem;
+    /* Slightly larger for luxury feel */
+    color: #f0f0f0;
+    margin-bottom: 3.5rem;
+    font-weight: 300;
+    max-width: 600px;
+    letter-spacing: 0.05em;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-white);
+    border: 1px solid var(--color-white);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-white);
+    color: var(--color-black);
+}
+
+/* FEATURE VIDEO SECTION (Replaces Split Section) */
+.feature-video-section {
+    position: sticky;
+    /* Override relative */
+    top: 0;
+    height: 100vh;
+    /* Force full height for sticky effect */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: var(--color-white);
+    z-index: 15;
+    /* Between Hero (10) and Collection (20) */
+    background-color: #000;
+    /* Ensure opaque background */
+}
+
+/* Reuse .video-bg and .video-overlay from Hero if possible, 
+   but ensure they are positioned relative to this section */
+.feature-video-section .video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.feature-video-section .video-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.feature-video-section .feature-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 2rem;
+}
+
+.white-text {
+    color: var(--color-white) !important;
+}
+
+.feature-video-section .section-title {
+    color: var(--color-white);
+    margin-bottom: 1.5rem;
+}
+
+.feature-video-section .section-desc {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2.5rem;
+}
+
+
+/* COLLECTION */
+.collection-section {
+    background-color: var(--color-white);
+    padding-top: 100px;
+    /* More spacing */
+}
+
+.mb-medium {
+    margin-bottom: 4rem;
+}
+
+.collection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* Slightly wider cards */
+    gap: 2rem;
+}
+
+.collection-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: var(--color-text-dark);
+}
+
+.card-img-wrapper {
+    width: 100%;
+    aspect-ratio: 3/4;
+    /* Portrait luxury ratio */
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 1.5rem;
+    background-color: #f4f4f4;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.6s ease, opacity 1s ease-in-out;
+    opacity: 0;
+    z-index: 1;
+    /* Base layer */
+}
+
+.card-img.active {
+    opacity: 1;
+    z-index: 2;
+    /* Active slide on top of inactive ones */
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 10;
+    /* Overlay always on top */
+}
+
+.collection-card:hover .card-img {
+    transform: scale(1.05);
+    /* Smooth luxury zoom */
+}
+
+.collection-card:hover .card-overlay {
+    opacity: 1;
+}
+
+.collection-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+/* WHY SANAARCRAFT SECTION */
+.why-section {
+    background-image: url('assets/rose banner grass.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    /* Dark overlay for text readability on grass */
+    z-index: 30;
+    color: var(--color-white);
+}
+
+.why-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    /* Stronger overlay */
+    z-index: 0;
+}
+
+.why-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.why-item {
+    padding: 1rem;
+}
+
+.icon-box {
+    font-size: 2.5rem;
+    color: var(--color-gold);
+    margin-bottom: 1rem;
+}
+
+.why-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-display);
+    color: var(--color-white);
+}
+
+.why-item p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.5;
+}
+
+/* BRAND STORY */
+.story-section {
+    background-image: url('assets/rose banner marble.png');
+    background-size: cover;
+    background-position: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    z-index: 70;
+}
+
+.story-content {
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.8);
+    /* Light box for readability on marble */
+    padding: 3rem;
+    border: 1px solid var(--color-gold);
+}
+
+.story-desc {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--color-text-dark);
+}
+
+/* FOOTER */
+.footer {
+    background-color: var(--color-white);
+    color: var(--color-black);
+    padding: 6rem 0 2rem 0;
+    border-top: 1px solid #eee;
+    /* Add subtle top border since it's white now */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 3rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 4rem;
+    margin-bottom: 2rem;
+    align-items: center;
+    /* Vertically center items */
+}
+
+.footer-brand {
+    display: flex;
+    justify-content: center;
+    /* Center if stacked or adjust as needed */
+    margin-bottom: 2rem;
+    width: 100%;
+    /* Force full width to center larger logo easily or keep inline if preferred. keeping flexible */
+    flex-basis: 100%;
+}
+
+.footer-logo {
+    height: 200px;
+    /* Much bigger size */
+    width: auto;
+    object-fit: contain;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    width: 100%;
+}
+
+.footer-links a {
+    color: var(--color-text-dark);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.footer-links a:hover {
+    color: var(--color-gold);
+}
+
+.footer-bottom p {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* CORPORATE SECTION */
+.corporate-section {
+    background-color: var(--color-white);
+    padding: var(--spacing-section) 0;
+}
+
+.corporate-text {
+    flex: 1;
+    padding-right: 4rem;
+}
+
+.corporate-image {
+    flex: 1;
+    height: 500px;
+    background-color: #e0e0e0;
+    position: relative;
+    overflow: hidden;
+}
+
+.corporate-slideshow {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.corporate-slideshow img.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.corporate-slideshow img.slide.active {
+    opacity: 1;
+}
+
+.btn-dark {
+    border-color: var(--color-black);
+    color: var(--color-black);
+}
+
+.btn-dark:hover {
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
+/* FEATURED IMMERSIVE SECTION */
+.featured-section {
+    min-height: 100vh;
+    /* Changed from height to min-height */
+    /* Remove 'position: relative' if it conflicts with 'sticky' from .section generic rule */
+    /* But .section has sticky. Let's ensure this inherits or overrides correctly. */
+    /* If .section definition is applied, it has sticky top 0. */
+    /* The issue might be overflow hidden cutting off subsequent sticky sections or z-index. */
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.featured-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.6;
+    transition: transform 10s linear;
+}
+
+/* INSTAGRAM SECTION REMOVED */
+
+/* GALLERY PREVIEW SECTION */
+.gallery-preview-section {
+    background-color: var(--color-white);
+    z-index: 65;
+    /* Insert between Featured (50) and Insta (60)? 
+                   Wait, Insta is usually last. 
+                   Order: Featured (50) -> Gallery (55) -> Insta (60) -> Footer (80).
+                   Ensure this z-index creates the stacking layer. */
+    position: sticky;
+    top: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.gallery-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 300px;
+    gap: 1rem;
+}
+
+.gallery-item {
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.mt-medium {
+    margin-top: 3rem;
+}
+
+.btn-dark-outline {
+    border-color: var(--color-text-dark);
+    color: var(--color-text-dark);
+}
+
+.btn-dark-outline:hover {
+    background-color: var(--color-text-dark);
+    color: var(--color-white);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .feature-video-section {
+        height: 60vh;
+    }
+
+    .feature-video-section .section-title {
+        font-size: 2rem;
+    }
+
+    .corporate-text {
+        padding-right: 0;
+        margin-bottom: 2rem;
+    }
+
+    .corporate-image {
+        height: 300px;
+    }
+
+    .gallery-preview-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 200px 200px;
+    }
+
+    .insta-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .logo {
+        color: var(--color-white);
+        z-index: 101;
+    }
+
+    .hamburger {
+        display: block;
+        cursor: pointer;
+        z-index: 101;
+    }
+
+    .hamburger span {
+        display: block;
+        width: 30px;
+        height: 2px;
+        background-color: var(--color-white);
+        margin: 6px 0;
+        transition: all 0.3s ease;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--color-black);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        transform: translateX(100%);
+        transition: transform 0.4s ease-in-out;
+        display: flex;
+        opacity: 0;
+        z-index: 100;
+    }
+
+    .nav-links.active {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    .nav-links a {
+        font-size: 1.5rem;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        transition-delay: 0.2s;
+    }
+
+    .nav-links.active a {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .hamburger.toggle span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 6px);
+    }
+
+    .hamburger.toggle span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.toggle span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -6px);
+    }
+
+    /* DISABLE STICKY SCROLL ON MOBILE - TALL SECTIONS ONLY */
+    /* Only disable for collection section so users can scroll to see all cards */
+    .collection-section {
+        position: relative !important;
+        top: auto !important;
+        min-height: auto !important;
+        /* Allow natural height */
+        z-index: 20 !important;
+        /* Keep z-index but relative */
+    }
+}

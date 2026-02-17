@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | SanaarCraft</title>
+    <meta name="description" content="Explore the exquisite craftsmanship of SanaarCraft's gold rose collection.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;500;600&family=Great+Vibes&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Specific Gallery Page Styles */
+        .page-header {
+            height: 50vh;
+            background-color: var(--color-black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-white);
+            position: relative;
+        }
+
+        .gallery-full-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 4rem 0;
+        }
+
+        .gallery-full-item {
+            aspect-ratio: 1/1;
+            /* Square grid */
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .gallery-full-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-full-item:hover img {
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation (Same as index) -->
+    <nav class="navbar" style="position: relative; background: #000;">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo text white.png" alt="SanaarCraft Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#collection">Collection</a></li>
+                <li><a href="index.html#story">Our Story</a></li>
+                <li><a href="index.html#corporate">Corporate</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html#shop" class="btn-nav">Shop</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1 class="hero-title">Our Gallery</h1>
+            <p class="hero-subtitle">A visual journey through our timeless creations.</p>
+        </div>
+    </header>
+
+    <!-- Full Gallery Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="gallery-full-grid">
+                <!-- Manually adding the 5 assets we copied -->
+                <div class="gallery-full-item"><img
+                        src="assets/gallery/hf_20260213_104557_38381484-c70a-4369-b3ab-48d186f57b6f.png" loading="lazy">
+                </div>
+                <div class="gallery-full-item"><img
+                        src="assets/gallery/hf_20260213_104655_74ecdc07-d77f-4f19-b707-02acb664ec20.png" loading="lazy">
+                </div>
+                <div class="gallery-full-item"><img
+                        src="assets/gallery/hf_20260213_104713_667193cc-73d0-4e11-9647-6ca41587bde2_11zon.png"
+                        loading="lazy"></div>
+                <div class="gallery-full-item"><img
+                        src="assets/gallery/hf_20260213_104734_44e8a1d6-b1fa-442b-a0ed-83c1cf7eab44.png" loading="lazy">
+                </div>
+                <div class="gallery-full-item"><img
+                        src="assets/gallery/hf_20260214_072936_364b5469-8ae2-42ab-989a-f82a68090e96 Firefly Upscaler 2x scale.png"
+                        loading="lazy"></div>
+                <!-- Repeating for visual fill -->
+                <div class="gallery-full-item"><img
+                        src="assets/gallery/hf_20260213_104557_38381484-c70a-4369-b3ab-48d186f57b6f.png" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Same as index) -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <img src="assets/logo main.png" alt="SanaarCraft" class="footer-logo">
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Shipping</a>
+                <a href="#">Returns</a>
+            </div>
+        </div>
+        <div class="container footer-bottom center-text">
+            <p>&copy; 2026 SanaarCraft. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <!-- INLINE GALLERY LOADER -->
+    <script>
+        (function () {
+            const images = [
+                "assets/gallery/hf_20260205_095514_084deee6-034e-4ad3-a991-dcb4719085c7.png",
+                "assets/gallery/hf_20260213_104702_400043ea-c20d-40d1-ac7b-ae97fb66d679.png",
+                "assets/gallery/hf_20260213_105221_7e6d7b43-97f5-4932-a33f-4cc5626064b8_11zon.png",
+                "assets/gallery/hf_20260214_072936_364b5469-8ae2-42ab-989a-f82a68090e96 Firefly Upscaler 2x scale.png",
+                "assets/gallery/rose to make your love eternal.png"
+            ];
+
+            const fullGrid = document.querySelector('.gallery-full-grid');
+            if (fullGrid) {
+                fullGrid.innerHTML = '';
+                images.forEach(imgSrc => {
+                    const div = document.createElement('div');
+                    div.className = 'gallery-full-item';
+                    div.innerHTML = `<img src="${imgSrc}" alt="Gallery Image">`;
+                    // Simple lightbox
+                    div.onclick = function () {
+                        let lightbox = document.getElementById('lightbox');
+                        if (!lightbox) {
+                            lightbox = document.createElement('div');
+                            lightbox.id = 'lightbox';
+                            lightbox.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 200; display: flex; align-items: center; justify-content: center; cursor: pointer;';
+                            lightbox.onclick = () => lightbox.style.display = 'none';
+                            document.body.appendChild(lightbox);
+                        }
+                        lightbox.innerHTML = `<img src="${imgSrc}" style="max-width: 90%; max-height: 90%; box-shadow: 0 0 20px rgba(0,0,0,0.5);">`;
+                        lightbox.style.display = 'flex';
+                    };
+                    fullGrid.appendChild(div);
+                });
+            }
+        })();
+    </script>
+</body>
+
+</html>

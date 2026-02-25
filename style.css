@@ -103,31 +103,43 @@ h4 {
 
 .section {
     padding: var(--spacing-section) 0;
-    position: sticky;
+    position: relative;
+    /* Default to relative (normal scroll) */
     top: 0;
     z-index: 10;
     /* Base z-index for sections */
     background-color: var(--color-white);
     /* Ensure opaque background for stacking */
+    /* Removed min-height and flex centering from generic section */
+    /* So non-sticky pages flow naturally */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    /* Subtle separator for stacking */
+}
+
+/* Enable sticky and full screen only when class is present */
+.sticky-scroll-enabled .section {
+    position: sticky;
     min-height: 100vh;
     /* Force full height for cinematic effect */
     display: flex;
     flex-direction: column;
     justify-content: center;
     /* Center content vertically in the viewport */
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    /* Subtle separator for stacking */
 }
 
 /* Ensure Hero is also sticky and full screen */
-/* Ensure Hero is also sticky and full screen */
 .hero {
-    position: sticky;
+    position: relative;
+    /* Default to relative */
     top: 0;
     z-index: 10;
     background-color: var(--color-black);
     width: 100%;
     /* Ensure full width */
+}
+
+.sticky-scroll-enabled .hero {
+    position: sticky;
 }
 
 /* Specific section overrides for z-index stacking if needed, 
@@ -537,25 +549,45 @@ h4 {
 
 /* WHY SANAARCRAFT SECTION */
 .why-section {
-    background-image: url('assets/rose banner grass.png');
-    background-size: cover;
-    background-position: center;
     position: relative;
-    /* Dark overlay for text readability on grass */
+    padding: var(--spacing-section) 0;
     z-index: 30;
     color: var(--color-white);
+    overflow: hidden;
+    background-color: var(--color-black);
 }
 
-.why-section::before {
-    content: "";
+.why-section .video-bg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    /* Stronger overlay */
     z-index: 0;
+}
+
+.why-section .video-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    /* Adjust for readability */
+}
+
+.why-section .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    /* Standard overlay */
+    z-index: 1;
+}
+
+/* Remove pseudo-element overlay as we use div .video-overlay now */
+.why-section::before {
+    content: none;
 }
 
 .why-section .container {
@@ -596,20 +628,74 @@ h4 {
 
 /* BRAND STORY */
 .story-section {
-    background-image: url('assets/rose banner marble.png');
-    background-size: cover;
-    background-position: center;
+    position: relative;
+    /* localized sticking or just relative for absolute children */
     padding-top: 100px;
     padding-bottom: 100px;
     z-index: 70;
+    overflow: hidden;
+    /* Ensure video doesn't spill */
+    background-color: var(--color-black);
+    /* Fallback color */
+}
+
+.story-section .video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.story-section .video-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.story-section .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    /* Adjust overlay opacity as needed */
+    z-index: 1;
+}
+
+.story-section .container {
+    position: relative;
+    z-index: 2;
+    /* Content above video */
 }
 
 .story-content {
-    max-width: 800px;
-    background: rgba(255, 255, 255, 0.8);
-    /* Light box for readability on marble */
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.9);
     padding: 3rem;
     border: 1px solid var(--color-gold);
+    backdrop-filter: blur(10px);
+    margin-right: auto;
+    /* Aligns to left within container */
+    text-align: left;
+    /* Clean look for side text */
+    margin-top: 0;
+    margin-bottom: 0;
+    position: relative;
+    /* Reset from absolute */
+    top: auto;
+    left: auto;
+    text-shadow: none;
+}
+
+@media (max-width: 768px) {
+    .story-content {
+        max-width: 100%;
+        margin: 0 auto;
+        text-align: center;
+    }
 }
 
 .story-desc {
@@ -619,65 +705,162 @@ h4 {
 }
 
 /* FOOTER */
+/* FOOTER - REVAMPED */
 .footer {
-    background-color: var(--color-white);
-    color: var(--color-black);
+    background-color: var(--color-black);
+    color: var(--color-white);
     padding: 6rem 0 2rem 0;
-    border-top: 1px solid #eee;
-    /* Add subtle top border since it's white now */
+    position: relative;
+    z-index: 80;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 3rem;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 4rem;
-    margin-bottom: 2rem;
-    align-items: center;
-    /* Vertically center items */
+.footer .container {
+    max-width: 1400px;
+    padding: 0 2rem;
 }
 
-.footer-brand {
-    display: flex;
-    justify-content: center;
-    /* Center if stacked or adjust as needed */
-    margin-bottom: 2rem;
-    width: 100%;
-    /* Force full width to center larger logo easily or keep inline if preferred. keeping flexible */
-    flex-basis: 100%;
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 4rem;
+    margin-bottom: 4rem;
 }
 
-.footer-logo {
-    height: 200px;
-    /* Much bigger size */
-    width: auto;
-    object-fit: contain;
+.footer-col h4 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-gold);
+    letter-spacing: 0.05em;
+}
+
+.footer-col p {
+    color: #aaa;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
 }
 
 .footer-links {
     display: flex;
-    gap: 2rem;
-    justify-content: center;
+    flex-direction: column;
+    gap: 0.8rem;
     width: 100%;
 }
 
 .footer-links a {
-    color: var(--color-text-dark);
+    color: #f0f0f0;
+    /* brighter than #aaa for links */
     text-decoration: none;
-    transition: color 0.3s ease;
-    font-size: 1rem;
-    font-weight: 500;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+    font-size: 0.95rem;
+    font-weight: 300;
 }
 
 .footer-links a:hover {
     color: var(--color-gold);
+    padding-left: 5px;
+    /* Subtle movement */
 }
 
-.footer-bottom p {
-    color: #888;
-    font-size: 0.9rem;
+/* Brand Column */
+.footer-logo {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 1.5rem;
+}
+
+/* Social Icons */
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    color: var(--color-white);
+}
+
+.social-icon:hover {
+    border-color: var(--color-gold);
+    color: var(--color-gold);
+    transform: translateY(-3px);
+}
+
+/* Newsletter */
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.newsletter-input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 0;
+    color: var(--color-white);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.newsletter-input:focus {
+    outline: none;
+    border-color: var(--color-gold);
+}
+
+.newsletter-input::placeholder {
+    color: #666;
+}
+
+.footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.footer-bottom-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-bottom-links a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom-links a:hover {
+    color: var(--color-white);
+}
+
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        /* Stack on mobile */
+        gap: 3rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
 }
 
 /* CORPORATE SECTION */
@@ -748,16 +931,38 @@ h4 {
     overflow: hidden;
 }
 
-.featured-bg {
+.featured-section .video-bg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0.6;
-    transition: transform 10s linear;
+    z-index: 0;
+}
+
+.featured-section .video-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    /* Adjust opacity if needed */
+}
+
+.featured-section .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    /* Dark overlay */
+    z-index: 1;
+}
+
+.featured-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 20px;
 }
 
 /* INSTAGRAM SECTION REMOVED */

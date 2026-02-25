@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Collection | SanaarCraft</title>
+    <meta name="description" content="Browse our exclusive collection of 24K gold roses and silver jewellery.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;500;600&family=Great+Vibes&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-header {
+            height: 40vh;
+            background-color: var(--color-black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-white);
+            position: relative;
+        }
+
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 3rem;
+            padding: 4rem 0;
+        }
+
+        .product-card {
+            background: #fff;
+            border: 1px solid #f0f0f0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .product-img-wrapper {
+            width: 100%;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            background: #f9f9f9;
+            position: relative;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 2rem;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .product-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-black);
+        }
+
+        .product-price {
+            font-family: var(--font-body);
+            color: var(--color-gold);
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" style="background: #000; position: relative;">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo text white.png" alt="SanaarCraft Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html" class="active">Shop</a></li>
+                <li><a href="index.html#story">Our Story</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="shop.html" class="btn-nav">Shop Now</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1 class="hero-title">Our Collection</h1>
+            <p class="hero-subtitle">Timeless gifts for every occasion.</p>
+        </div>
+    </header>
+
+    <!-- Shop Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="shop-grid">
+                <!-- Product 1: Gold Rose -->
+                <a href="product.html?id=gold-rose" class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="assets/collection/gold%20rose.png" alt="24K Gold Rose" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">It's Real 24K Gold Rose</h3>
+                        <p class="product-price">₹2,999</p>
+                    </div>
+                </a>
+
+                <!-- Product 2: Rose Gold -->
+                <a href="product.html?id=rose-gold" class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="assets/collection/rose%20gold.png" alt="Rose Gold Rose" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">It's Real Rose Gold Rose</h3>
+                        <p class="product-price">₹2,999</p>
+                    </div>
+                </a>
+
+                <!-- Product 3: Platinum -->
+                <a href="product.html?id=platinum-rose" class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="assets/collection/platinum%20rose.png" alt="Platinum Rose" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">It's Real Platinum Rose</h3>
+                        <p class="product-price">₹3,499</p>
+                    </div>
+                </a>
+
+                <!-- Product 4: Silver Jewellery -->
+                <a href="product.html?id=silver-jewellery" class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="assets/collection/silver.png" alt="Pure Silver Jewellery" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Pure Silver Jewellery</h3>
+                        <p class="product-price">₹4,999</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="assets/logo text white.png" alt="Sanaar Gold" class="footer-logo">
+                    <p>Timeless luxury preserved in gold. The ultimate symbol of enduring love and appreciation.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg></a>
+                        <a href="#" class="social-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Collections</h4>
+                    <div class="footer-links">
+                        <a href="product.html?id=gold-rose">24K Gold Roses</a>
+                        <a href="product.html?id=rose-gold">Rose Gold Roses</a>
+                        <a href="product.html?id=platinum-rose">Platinum Roses</a>
+                        <a href="product.html?id=silver-jewellery">Pure Silver Jewellery</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <div class="footer-links">
+                        <a href="#">Contact Us</a>
+                        <a href="#">Shipping & Delivery</a>
+                        <a href="#">Returns & Exchanges</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Unlock Exclusive Offers</h4>
+                    <p>Subscribe to receive updates.</p>
+                    <form class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Enter your email address">
+                        <button type="submit" class="btn btn-primary"
+                            style="width: 100%; border-color: var(--color-gold); color: var(--color-gold);">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Sanaar Gold. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
